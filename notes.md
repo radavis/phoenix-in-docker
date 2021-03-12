@@ -11,6 +11,7 @@ init your development environment via docker-compose
 ```bash
 $ alias dc="docker-compose"
 $ cp .env.example .env
+$ nano .env  # configure psql database name, username, password
 $ dc build
 $ dc up
 ```
@@ -52,3 +53,13 @@ $ dc up
 $ dc run app \
     mix ecto.create
 ```
+
+uncomment lines in `Dockerfile.development`, then `dc down && dc build`
+
+boot it up!
+
+```bash
+$ dc up
+```
+
+visit <http://localhost:4000/>
