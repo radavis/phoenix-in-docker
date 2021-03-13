@@ -13,8 +13,19 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 initial setup
 
-```
+```bash
 $ mix phoenix.new . --app rumbl
 $ mix ecto.create
 $ mix phoenix.server
+```
+
+## Users
+
+```bash
+$ iex -S mix
+> alias Rumbl.User
+> alias Rumbl.Repo
+> Repo.all(User)
+> Repo.get(User, "1")
+> Repo.get_by(User, name: "Chris")
 ```
