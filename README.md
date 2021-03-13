@@ -29,3 +29,11 @@ $ iex -S mix
 > Repo.get(User, "1")
 > Repo.get_by(User, name: "Chris")
 ```
+
+## Editor
+
+![](./editor.png)
+
+## Browser
+
+![](./browser.png)
