@@ -16,10 +16,10 @@ services:
   db:
     image: postgres:9.3
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_USER=${POSTGRES_USER}
 
 volumes:
-  db_data:
+  db-data:
