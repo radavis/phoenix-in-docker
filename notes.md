@@ -63,3 +63,10 @@ $ dc up
 ```
 
 visit <http://localhost:4000/>
+
+open interactive elixir (iex) and load the `mix phoenix.server` script
+
+```bash
+$ dc run app \
+    iex -S mix phoenix.server
+```
