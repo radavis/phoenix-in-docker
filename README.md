@@ -28,7 +28,7 @@ connection
 |> endpoint
 |> router
 |> pipelines  # typically one for browser requests, another for json/api requests
-|> controller 
+|> controller
 ```
 
 Controller as pipe chain of functions
@@ -60,3 +60,11 @@ $ mix phoenix.new . --app hello
 $ mix ecto.create
 $ mix phoenix.server
 ```
+
+## Editor
+
+![](./editor.png)
+
+## Browser
+
+![](./browser.png)
