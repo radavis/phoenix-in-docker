@@ -37,3 +37,13 @@ $ iex -S mix
 ## Browser
 
 ![](./browser.png)
+
+---
+
+## Editor (show user)
+
+![](./editor-show-user.png)
+
+## Browser (show user)
+
+![](./browser-show-user.png)
