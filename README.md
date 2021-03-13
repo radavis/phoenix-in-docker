@@ -28,7 +28,7 @@ connection
 |> endpoint
 |> router
 |> pipelines  # typically one for browser requests, another for json/api requests
-|> controller
+|> controller 
 ```
 
 Controller as pipe chain of functions
@@ -48,6 +48,8 @@ connection   # Plug.Conn
 |> HelloView.render(  # web/views/hello_view.ex
   "world.html")  # web/templates/hello/world.html.eex
 ```
+
+> Plugs are functions. Your web applications are pipelines of plugs.
 
 ## Commands
 
