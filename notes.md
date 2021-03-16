@@ -63,3 +63,13 @@ $ dc up
 ```
 
 visit <http://localhost:4000/>
+
+---
+
+see which files violate elixir formatting rules, remove `--check-formatted` to
+format source code
+
+```bash
+$ dc run app \
+    mix format --check-formatted
+```
