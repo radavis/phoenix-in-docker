@@ -17,3 +17,22 @@ $ dc run app \
 $ dc run app \
     mix ecto.migrate
 ```
+
+## Formatting Code
+
+[[source](https://hexdocs.pm/mix/master/Mix.Tasks.Format.html)]
+
+**file**: `.formatter.exs`
+
+```
+[
+  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
+]
+```
+
+run the following without `--check-formatted` to auto-format code
+
+```bash
+$ dc run app \
+    mix format --check-formatted
+```

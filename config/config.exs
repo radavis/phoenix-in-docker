@@ -14,8 +14,7 @@ config :rumbl, Rumbl.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "GNZ5YJlxIcD0NT9SljGs6umArMSddNL96oHBGw7b/muSr5jyOoVBI1DALeWzzbSH",
   render_errors: [view: Rumbl.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Rumbl.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Rumbl.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +23,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
