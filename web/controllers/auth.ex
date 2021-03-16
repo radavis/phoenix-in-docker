@@ -33,4 +33,9 @@ defmodule Rumbl.Auth do
         {:error, :not_found, conn}
     end
   end
+
+  def logout(conn) do
+    configure_session(conn, drop: true)  # destroy the session, or
+    # delete_session(conn, :user_id)  # to delete only the user_id
+  end
 end
