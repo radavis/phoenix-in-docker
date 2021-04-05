@@ -64,9 +64,27 @@ $ dc up
 
 visit <http://localhost:4000/>
 
-drop into a console
+drop into an interactive elixir console
 
 ```bash
-$ dc run app /
+$ dc exec app /
     iex -S mix
+```
+
+drop into an interactive shell console
+
+```bash
+$ dc exec app /usr/bin/env bash
+```
+
+drop into a postgres console
+
+```bash
+$ psql $DATABASE_URL
+```
+
+list application routes
+
+```bash
+$ mix phoenix.routes
 ```

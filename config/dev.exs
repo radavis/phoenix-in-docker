@@ -1,7 +1,7 @@
 use Mix.Config
 
 config :rumbl, Rumbl.Endpoint,
-  http: [port: 4000],
+  http: [port: System.get_env("APP_PORT")],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
