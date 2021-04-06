@@ -63,14 +63,20 @@ defmodule Rumbl.VideoControllerTest do
     %{conn: conn, user: user} do
 
     video = insert_video(user, @valid_attrs)
-    non_owner = insert_user(username: "sneaky")
+    non_owner = insert_user(%{username: "sneaky"})
     conn = assign(conn, :current_user, non_owner)
 
     assert_error_sent :not_found, fn ->
-      get(conn, video_path(conn, :show, video)
+      get(conn, video_path(conn, :show, video))
     end
     assert_error_sent :not_found, fn ->
-      get(conn, video_path(conn, :edit, video)
+      get(conn, video_path(conn, :edit, video))
+    end
+    assert_error_sent :not_found, fn ->
+      put(conn, video_path(conn, :update, video, video: @valid_attrs))
+    end
+    assert_error_sent :not_found, fn ->
+      delete(conn, video_path(conn, :delete, video))
     end
   end
 end
