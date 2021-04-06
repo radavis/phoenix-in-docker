@@ -1,12 +1,13 @@
 use Mix.Config
 
 config :rumbl, Rumbl.Endpoint,
-  http: [port: 4000],
+  http: [port: System.get_env("APP_PORT")],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../", __DIR__)]]
+  watchers: [
+    node: ["node_modules/brunch/bin/brunch", "watch", "--stdin", cd: Path.expand("../", __DIR__)]
+  ]
 
 config :rumbl, Rumbl.Endpoint,
   live_reload: [

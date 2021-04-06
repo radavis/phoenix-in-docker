@@ -1,49 +1,38 @@
 # Rumbl
 
-To start your Phoenix app:
+## Generating Resources
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+* `phoenix.gen.html` - HTML scaffold
+* `phoenix.gen.json` - JSON scaffold
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-## Commands
-
-initial setup
+generate a video resource
 
 ```bash
-$ mix phoenix.new . --app rumbl
-$ mix ecto.create
-$ mix phoenix.server
+$ dc run app \
+    mix phoenix.gen.html Video videos \
+      user_id:references:users \
+      url:string \
+      title:string \
+      description:text
+$ dc run app \
+    mix ecto.migrate
 ```
 
-## Users
+## Formatting Code
+
+[[source](https://hexdocs.pm/mix/master/Mix.Tasks.Format.html)]
+
+**file**: `.formatter.exs`
+
+```
+[
+  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
+]
+```
+
+run the following without `--check-formatted` to auto-format code
 
 ```bash
-$ iex -S mix
-> alias Rumbl.User
-> alias Rumbl.Repo
-> Repo.all(User)
-> Repo.get(User, "1")
-> Repo.get_by(User, name: "Chris")
+$ dc run app \
+    mix format --check-formatted
 ```
-
-## Editor
-
-![](./editor.png)
-
-## Browser
-
-![](./browser.png)
-
----
-
-## Editor (show user)
-
-![](./editor-show-user.png)
-
-## Browser (show user)
-
-![](./browser-show-user.png)
