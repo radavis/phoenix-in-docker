@@ -16,11 +16,11 @@ RUN mkdir /app
 COPY . /app
 WORKDIR /app
 
-#RUN mix deps.get
+RUN mix deps.get
 
-#RUN npm install
-#RUN node node_modules/brunch/bin/brunch build
+RUN npm install
+RUN node node_modules/brunch/bin/brunch build
 
-#EXPOSE 4000
+EXPOSE 4000
 CMD ["/bin/bash"]
-#CMD ["mix", "phoenix.server"]
+CMD ["mix", "phoenix.server"]
