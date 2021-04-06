@@ -58,20 +58,23 @@ defmodule Rumbl.AuthTest do
   end
 
   test "login with valid credentials", %{conn: conn} do
-    conn = insert_user(%{username: "me", password: "asdf1234"})
-    {:ok, conn} = 
+    user = insert_user(%{username: "me", password: "asdf1234"})
+    {:ok, conn} =
       Auth.login_by_username_and_password(conn, "me", "asdf1234", repo: Repo)
-    assert conn.assigns.current_user.id = user.id
+    #user_id = conn.assigns.current_user.id
+    #assert user_id == user.id
+
+    assert conn.assigns.current_user.id == user.id
   end
 
   test "login with invalid credentials", %{conn: conn} do
     insert_user(%{username: "me", password: "asdf1234"})
-    assert {:error, :unauthorized, _conn} = 
+    assert {:error, :unauthorized, _conn} =
       Auth.login_by_username_and_password(conn, "me", "wrong", repo: Repo)
   end
 
   test "login without an account", %{conn: conn} do
-    assert {:error, :not_found, _conn} = 
+    assert {:error, :not_found, _conn} =
       Auth.login_by_username_and_password(conn, "me", "asdf1234", repo: Repo)
   end
 end
