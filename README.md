@@ -1,38 +1,20 @@
 # Rumbl
 
-## Generating Resources
-
-* `phoenix.gen.html` - HTML scaffold
-* `phoenix.gen.json` - JSON scaffold
-
-generate a video resource
+Generate the `Rumbl.Category` model
 
 ```bash
-$ dc run app \
-    mix phoenix.gen.html Video videos \
-      user_id:references:users \
-      url:string \
-      title:string \
-      description:text
-$ dc run app \
-    mix ecto.migrate
+$ mix phoenix.gen.model Category categories name:string
 ```
 
-## Formatting Code
-
-[[source](https://hexdocs.pm/mix/master/Mix.Tasks.Format.html)]
-
-**file**: `.formatter.exs`
-
-```
-[
-  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
-]
-```
-
-run the following without `--check-formatted` to auto-format code
+Generate a migration to add `category_id` to the `videos` table
 
 ```bash
-$ dc run app \
-    mix format --check-formatted
+$ mix ecto.gen.migration add_category_id_to_video
+```
+
+Run migrations and seeds
+
+```bash
+$ mix ecto.migrate
+$ mix run priv/repo/seeds.exs
 ```
