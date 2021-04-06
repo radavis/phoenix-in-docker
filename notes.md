@@ -63,3 +63,10 @@ $ dc up
 ```
 
 visit <http://localhost:4000/>
+
+drop into a console
+
+```bash
+$ dc run app /
+    iex -S mix
+```
