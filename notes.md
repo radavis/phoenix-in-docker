@@ -123,3 +123,22 @@ run the following without `--check-formatted` to auto-format code
 $ dc run app \
     mix format --check-formatted
 ```
+
+generate the `Rumbl.Category` model
+
+```bash
+$ mix phoenix.gen.model Category categories name:string
+```
+
+generate a migration to add `category_id` to the `videos` table
+
+```bash
+$ mix ecto.gen.migration add_category_id_to_video
+```
+
+run migrations and seeds
+
+```bash
+$ mix ecto.migrate
+$ mix run priv/repo/seeds.exs
+```
