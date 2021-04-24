@@ -29,6 +29,8 @@ create a new phoenix application
 
 ```bash
 $ dc run app \
+    mix deps.get # install dependencies
+$ dc run app \
     mix phoenix.new # to get help text
 $ dc run app \
     mix phoenix.new . --app hello
@@ -122,4 +124,23 @@ run the following without `--check-formatted` to auto-format code
 ```bash
 $ dc run app \
     mix format --check-formatted
+```
+
+generate the `Rumbl.Category` model
+
+```bash
+$ mix phoenix.gen.model Category categories name:string
+```
+
+generate a migration to add `category_id` to the `videos` table
+
+```bash
+$ mix ecto.gen.migration add_category_id_to_video
+```
+
+run migrations and seeds
+
+```bash
+$ mix ecto.migrate
+$ mix run priv/repo/seeds.exs
 ```

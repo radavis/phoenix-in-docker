@@ -1,20 +1,21 @@
 # Rumbl
 
-Generate the `Rumbl.Category` model
+Run tests
 
 ```bash
-$ mix phoenix.gen.model Category categories name:string
+$ dc exec app mix test
 ```
 
-Generate a migration to add `category_id` to the `videos` table
+Run a single test
 
 ```bash
-$ mix ecto.gen.migration add_category_id_to_video
+$ dc exec app \
+    mix test test/controllers/page_controller_test.exs:4
 ```
 
-Run migrations and seeds
+Run a tagged test
 
 ```bash
-$ mix ecto.migrate
-$ mix run priv/repo/seeds.exs
+$ dc exec app \
+    mix test test/controllers --only login_as
 ```
