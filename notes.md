@@ -29,6 +29,8 @@ create a new phoenix application
 
 ```bash
 $ dc run app \
+    mix deps.get # install dependencies
+$ dc run app \
     mix phoenix.new # to get help text
 $ dc run app \
     mix phoenix.new . --app hello
