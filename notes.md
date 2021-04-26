@@ -144,3 +144,23 @@ run migrations and seeds
 $ mix ecto.migrate
 $ mix run priv/repo/seeds.exs
 ```
+
+run tests
+
+```bash
+$ dc exec app mix test
+```
+
+run a single test
+
+```bash
+$ dc exec app \
+    mix test test/controllers/page_controller_test.exs:4
+```
+
+run a tagged test
+
+```bash
+$ dc exec app \
+    mix test test/controllers --only login_as
+```
