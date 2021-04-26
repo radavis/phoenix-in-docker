@@ -13,7 +13,7 @@
 alias Rumbl.Repo
 alias Rumbl.Category
 
-categories = ~w(Action Drama Romance Comedy Sci-fi)
+categories = ~w(Action Drama Romance Comedy Sci-fi Technology)
 for category <- categories do
   Repo.get_by(Category, name: category) || Repo.insert!(%Category{name: category})
 end
