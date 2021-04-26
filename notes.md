@@ -21,6 +21,7 @@ you will take down your environment and rebuild, as necessary
 ```bash
 $ dc down
 $ dc rm
+$ docker volume prune # to blow away db volume
 $ dc build
 $ dc up
 ```
@@ -163,4 +164,26 @@ run a tagged test
 ```bash
 $ dc exec app \
     mix test test/controllers --only login_as
+```
+
+brunch commands
+
+```bash
+$ brunch build
+$ brunch build --production
+$ brunch watch
+```
+
+show outdated hex dependencies for the current project
+
+```bash
+$ dc exec app \
+    mix hex.outdated
+```
+
+update dependencies
+
+```bash
+$ dc exec app \
+    mix deps.update --all
 ```
