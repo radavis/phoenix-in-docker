@@ -1,5 +1,12 @@
 # notes
 
+working through...
+
+- https://hexdocs.pm/phoenix/up_and_running.html
+- https://hexdocs.pm/phoenix/channels.html#tying-it-all-together
+
+## getting started
+
 install [inotify-tools](https://github.com/inotify-tools/inotify-tools/wiki), then
 
 ```bash
