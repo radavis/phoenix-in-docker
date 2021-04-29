@@ -29,12 +29,13 @@ defmodule Rumbl.VideoChannel do
 
     case Repo.insert(changeset) do
       {:ok, annotation} ->
-        broadcast!(socket, "new_annotation", %{
-          id: annotation.id,
-          user: Rumbl.UserView.render("user.json", %{user: user}),
-          body: annotation.body,
-          at: annotation.at
-        })
+        # broadcast!(socket, "new_annotation", %{
+        #   id: annotation.id,
+        #   user: Rumbl.UserView.render("user.json", %{user: user}),
+        #   body: annotation.body,
+        #   at: annotation.at
+        # })
+        broadcast!(socket, "new_annotation", AnnotationView.render(annotation.json, annotation))
         {:reply, :ok, socket}
       {:error, changeset} ->
         {:reply, {:error, %{errors: changeset}}, socket}
