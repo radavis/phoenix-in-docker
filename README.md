@@ -1,9 +1,12 @@
 # Rumbl
 
-brunch commands
+create `annotation` model
 
 ```bash
-$ brunch build
-$ brunch build --production
-$ brunch watch
+$ dc exec app \
+    mix phoenix.gen.model Annotation annotations \
+    body:text \
+    at:integer \
+    user_id:references:users \
+    video_id:references:videos
 ```

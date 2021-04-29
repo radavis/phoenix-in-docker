@@ -10,6 +10,7 @@ defmodule Rumbl.Video do
     field :slug, :string
     belongs_to :user, Rumbl.User
     belongs_to :category, Rubml.Category
+    has_many :annotations, Rumbl.Annotation
     timestamps()
   end
 
@@ -19,7 +20,7 @@ defmodule Rumbl.Video do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ :empty) do
+  def changeset(struct, params \\ :invalid) do
     struct
     |> cast(params, @required_fields, @optional_fields)
     |> validate_required(@required_fields)

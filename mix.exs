@@ -5,7 +5,7 @@ defmodule Rumbl.Mixfile do
     [
       app: :rumbl,
       version: "0.0.1",
-      elixir: "~> 1.2",
+      elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
@@ -46,11 +46,11 @@ defmodule Rumbl.Mixfile do
     [
       {:phoenix, "~> 1.2.5"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.6"},
+      {:phoenix_ecto, "~> 3.0.0"},
+      {:postgrex, "~> 0.11.0"},
+      {:phoenix_html, "~> 2.6.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
+      {:gettext, "~> 0.11.0"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 2.0"}
     ]
