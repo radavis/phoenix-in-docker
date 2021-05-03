@@ -11,13 +11,16 @@ defmodule Rumbl do
       # Start the Ecto repository
       supervisor(Rumbl.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Rumbl.Endpoint, [])
+      supervisor(Rumbl.Endpoint, []),
       # Start your own worker by calling: Rumbl.Worker.start_link(arg1, arg2, arg3)
       # worker(Rumbl.Worker, [arg1, arg2, arg3]),
+      # worker restart strategies: [:permanent, :temporary, :transient]
+      worker(Rumbl.Counter, [5], restart: :temporary),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
+    # supervisor strategies: ~w(one_for_one one_for_all rest_for_one simple_one_for_one)a
     opts = [strategy: :one_for_one, name: Rumbl.Supervisor]
     Supervisor.start_link(children, opts)
   end
