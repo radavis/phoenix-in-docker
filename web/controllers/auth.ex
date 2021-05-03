@@ -41,7 +41,7 @@ defmodule Rumbl.Auth do
     user = repo.get_by(Rumbl.User, username: username)
 
     cond do
-      user && checkpw(password, user.password_hash) ->
+      user && user.password_hash && checkpw(password, user.password_hash) ->
         {:ok, login(conn, user)}
       user ->
         {:error, :unauthorized, conn}
