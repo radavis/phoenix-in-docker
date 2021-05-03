@@ -13,3 +13,12 @@ iex> Counter.val(c)
 iex> Counter.dec(c)
 iex> Counter.val(c)
 ```
+
+Query Wolfram|Alpha API
+
+```bash
+$ dc run app \
+    iex -S mix
+iex> Rumbl.InfoSys.compute("what is elixir?")
+iex> flush()
+```
