@@ -1,12 +1,24 @@
 # Rumbl
 
-create `annotation` model
+Try the OTP counter
 
 ```bash
-$ dc exec app \
-    mix phoenix.gen.model Annotation annotations \
-    body:text \
-    at:integer \
-    user_id:references:users \
-    video_id:references:videos
+$ dc run app \
+    iex -S mix
+iex> alias Rumbl.Counter
+iex> {:ok, c} = Counter.start_link(0)
+iex> Counter.inc(c)
+iex> Counter.inc(c)
+iex> Counter.val(c)
+iex> Counter.dec(c)
+iex> Counter.val(c)
+```
+
+Query Wolfram|Alpha API
+
+```bash
+$ dc run app \
+    iex -S mix
+iex> Rumbl.InfoSys.compute("what is elixir?")
+iex> flush()
 ```

@@ -1,4 +1,5 @@
 defmodule Rumbl.VideoChannel do
+  require Logger
   use Rumbl.Web, :channel
   alias Rumbl.AnnotationView
 
@@ -31,17 +32,33 @@ defmodule Rumbl.VideoChannel do
 
     case Repo.insert(changeset) do
       {:ok, annotation} ->
-        broadcast!(socket, "new_annotation", %{
-          id: annotation.id,
-          user: Rumbl.UserView.render("user.json", %{user: user}),
-          body: annotation.body,
-          at: annotation.at
-        })
-        # broadcast!(socket, "new_annotation", AnnotationView.render("annotation.json", annotation))
+        broadcast_annotation(socket, annotation)
+        Task.start_link(fn -> compute_additional_info(annotation, socket) end)
         {:reply, :ok, socket}
       {:error, changeset} ->
         {:reply, {:error, %{errors: changeset}}, socket}
     end
+  end
 
+  defp broadcast_annotation(socket, annotation) do
+    annotation = Repo.preload(annotation, :user)
+    annotation_json = Phoenix.View.render(AnnotationView, "annotation.json", %{annotation: annotation})
+    broadcast!(socket, "new_annotation", annotation_json)
+  end
+
+  defp compute_additional_info(annotation, socket) do
+    for result <- Rumbl.InfoSys.compute(annotation.body, limit: 1, timeout: 10_000) do
+      attrs = %{url: result.url, body: result.text, at: annotation.at}
+      info_changeset = Repo.get_by(Rumbl.User, username: result.backend)
+      |> build_assoc(:annotations, video_id: annotation.video_id)
+      |> Rumbl.Annotation.changeset(attrs)
+
+      case Repo.insert(info_changeset) do
+        {:ok, info_annotation} -> broadcast_annotation(socket, info_annotation)
+        {:error, _changeset} ->
+          Logger.error("Could not insert annotation: #{inspect(info_changeset)}")
+          :ignore
+      end
+    end
   end
 end

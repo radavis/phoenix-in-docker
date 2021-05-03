@@ -13,6 +13,7 @@ services:
       - APP_PORT=${APP_PORT}
       - DATABASE_URL=${DATABASE_URL}
       - TEST_DATABASE_URL=${TEST_DATABASE_URL}
+      - WOLFRAM_APP_ID=${WOLFRAM_APP_ID}
     depends_on:
       - db
   db:
