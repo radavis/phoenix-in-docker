@@ -54,6 +54,10 @@ defmodule InfoSys do
       :timedout ->
         kill(pid, monitor_ref)
         await_result(tail, acc, 0)
+    after
+      timeout ->
+        kill(pid, monitor_ref)
+        await_result(tail, acc, 0)
     end
   end
 
